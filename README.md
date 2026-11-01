@@ -5,23 +5,26 @@ Android için **fotoğraf piksellerinden sayı üreten** uygulama.
 Çektiğiniz fotoğrafın piksellerinden 6 temel metrik hesaplar ve bunları
 seçtiğiniz aralığa ölçekleyerek size **N adet sayı** verir.
 
-## Hesaplama
+## Hesaplama (v1.1 — Kare Tarama + Hash)
 
-Fotoğrafın tüm pikselleri taranır (büyük görsellerde örneklenir) ve şu 6 temel
-metrik hesaplanır — her biri `0-255` aralığında:
+Fotoğraf **istenen sayı adedi kadar kareye bölünür** ve her kareden **benzersiz**
+bir sayı üretilir — loto için mükemmel:
 
-| # | Metrik | Açıklama |
-|---|--------|----------|
-| 1 | Kırmızı | Ortalama R kanalı |
-| 2 | Yeşil   | Ortalama G kanalı |
-| 3 | Mavi    | Ortalama B kanalı |
-| 4 | Parlaklık | BT.601 luminance: `0.299·R + 0.587·G + 0.114·B` |
-| 5 | Doygunluk | HSV S kanalı ortalaması |
-| 6 | Kontrast | Parlaklığın standart sapması |
+1. **Grid bölme:** `cols = ceil(sqrt(count))`, kalan satırlar tamamlanır.
+   Örn. 6 sayı → 3×2 grid, 7 sayı → 3×3 (ilk 7 kare), 18 sayı → 5×4.
+2. **Kare hash'i:** Her karenin pikselleri örneklenir; R/G/B değerleri piksel
+   piksel **FNV-1a 64-bit** akışına beslenir. Ardından karenin toplu
+   metrikleri (ort. R, G, B, parlaklık, doygunluk, kontrast) de hash'e katılır.
+3. **Aralığa map:** Hash, `[min, max]` aralığına modulo ile çevrilir.
+4. **Benzersizlik garantisi:** Çakışma olursa **altın oran adımı**
+   (golden-ratio probing) ile bir sonraki boş sayı seçilir.
+5. **Deterministik:** Aynı fotoğraf her zaman aynı sayıları verir.
 
-Bu 6 değer, kullanıcının seçtiği `[min, max]` aralığına lineer olarak
-ölçeklenir. Eğer sayı adedi 6'dan fazla seçilirse metrikler döngüsel olarak
-tekrar eder (modül 6).
+Güvenlik koşulu: `(max - min + 1) >= count` olmalı. Aksi halde Ayarlar'da
+kayıt anında ve çekim anında uyarı gösterilir.
+
+Ek olarak tüm fotoğrafın global metrikleri (ort. R/G/B, parlaklık,
+doygunluk, kontrast) istatistik panelinde gösterilir.
 
 ## Varsayılan ayarlar
 

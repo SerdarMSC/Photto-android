@@ -168,9 +168,22 @@ class MainActivity : AppCompatActivity() {
         val scaled = downsample(bitmap, 1024)
 
         lifecycleScope.launch {
-            val result: PixelResult = withContext(Dispatchers.Default) {
-                PixelCalculator.calculate(scaled, settings.count, settings.min, settings.max)
+            // Aralık, istenen sayı adedine yetmiyorsa calculate
+            // IllegalArgumentException fırlatır -> null döner
+            val result: PixelResult? = withContext(Dispatchers.Default) {
+                try {
+                    PixelCalculator.calculate(scaled, settings.count, settings.min, settings.max)
+                } catch (e: IllegalArgumentException) {
+                    null
+                }
             }
+
+            if (result == null) {
+                showError(getString(R.string.err_range_too_small,
+                    settings.min, settings.max, settings.count))
+                return@launch
+            }
+
             displayResult(result)
             binding.progressBar.visibility = View.GONE
             binding.btnCapture.isEnabled = true

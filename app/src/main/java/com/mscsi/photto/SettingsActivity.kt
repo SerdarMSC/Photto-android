@@ -79,6 +79,12 @@ class SettingsActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Loto için sayılar benzersiz olmalı -> aralık yeterli olmalı
+            if (max - min + 1 < count) {
+                Toast.makeText(this, R.string.err_range_too_small, Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             SettingsManager.save(this, AppSettings(count = count, min = min, max = max))
             Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
             finish()

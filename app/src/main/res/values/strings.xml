@@ -30,5 +30,6 @@
     <string name="save">Kaydet</string>
     <string name="reset">Sıfırla</string>
     <string name="err_min_max">Minimum değer maksimumdan küçük olmalı.</string>
+    <string name="err_range_too_small">Aralık yetersiz: %1$d–%2$d aralığında %3$d benzersiz sayı yok. Maksimumu artırın veya minimumu düşürün.</string>
     <string name="saved">Ayarlar kaydedildi.</string>
 </resources>
