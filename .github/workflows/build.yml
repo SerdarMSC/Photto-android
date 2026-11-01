@@ -22,17 +22,18 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Set up Android SDK (cmdline-tools + licenses)
-        uses: android-actions/setup-android@v3
-
-      - name: Install required SDK components
+      - name: Set up Android SDK (pre-installed on ubuntu-latest)
         run: |
           set -e
-          echo "Installing platforms;android-34 and build-tools;34.0.0..."
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          # Lisansları kabul et (zaten kabul edilmiş olabilir)
           yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          # Gerekli paketleri kur (çoğu runner'da halihazırda mevcut,
+          # bu adım sadece eksikse yüklüyor)
           sdkmanager "platforms;android-34" "build-tools;34.0.0"
-          echo "--- Installed packages ---"
-          sdkmanager --list_installed || true
+          echo "--- Kurulu paketler ---"
+          sdkmanager --list_installed 2>/dev/null || sdkmanager --list | head -60
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
