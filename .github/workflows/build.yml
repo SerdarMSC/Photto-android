@@ -25,13 +25,22 @@ jobs:
       - name: Set up Android SDK (pre-installed on ubuntu-latest)
         run: |
           set -e
+          # GitHub runner'ında sdkmanager PATH'te değil — cmdline-tools/bin'i ekle
+          SDK_BIN="$ANDROID_HOME/cmdline-tools/latest/bin"
+          [ -d "$SDK_BIN" ] || SDK_BIN="$ANDROID_HOME/cmdline-tools/bin"
+          export PATH="$SDK_BIN:$PATH"
+          # Sonraki step'ler için PATH'e kalıcı ekle
+          echo "$SDK_BIN" >> "$GITHUB_PATH"
+          
+          echo "sdkmanager yolu: $(command -v sdkmanager)"
           echo "ANDROID_HOME=$ANDROID_HOME"
-          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
-          # Lisansları kabul et (zaten kabul edilmiş olabilir)
-          yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          # Gerekli paketleri kur (çoğu runner'da halihazırda mevcut,
-          # bu adım sadece eksikse yüklüyor)
+          
+          # Lisansları kabul et (yes'in broken pipe mesajı zararsız, || true ile geç)
+          yes 2>/dev/null | sdkmanager --licenses > /dev/null 2>&1 || true
+          
+          # Gerekli paketleri kur (zaten kuruluysa hızlıca atlar)
           sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          
           echo "--- Kurulu paketler ---"
           sdkmanager --list_installed 2>/dev/null || sdkmanager --list | head -60
 
