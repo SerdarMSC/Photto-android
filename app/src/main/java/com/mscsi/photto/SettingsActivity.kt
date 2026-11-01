@@ -36,12 +36,13 @@ class SettingsActivity : AppCompatActivity() {
         }
         binding.tvCount.text = current.count.toString()
 
-        // --- Minimum değer slider ---
+        // --- Minimum değer slider (0 yasak: en az 1) ---
         binding.sliderMin.apply {
-            valueFrom = 0f
+            valueFrom = SettingsManager.MIN_VALUE_LIMIT.toFloat()
             valueTo = SettingsManager.RANGE_BOUND.toFloat()
             stepSize = 1f
-            value = current.min.toFloat().coerceIn(0f, SettingsManager.RANGE_BOUND.toFloat())
+            value = current.min.toFloat()
+                .coerceIn(SettingsManager.MIN_VALUE_LIMIT.toFloat(), SettingsManager.RANGE_BOUND.toFloat())
             addOnChangeListener { _, value, _ ->
                 binding.tvMin.text = value.toInt().toString()
                 // min, max'ı geçmemeli

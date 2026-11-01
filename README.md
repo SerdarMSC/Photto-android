@@ -19,6 +19,14 @@ bir sayı üretilir — loto için mükemmel:
 4. **Benzersizlik garantisi:** Çakışma olursa **altın oran adımı**
    (golden-ratio probing) ile bir sonraki boş sayı seçilir.
 5. **Deterministik:** Aynı fotoğraf her zaman aynı sayıları verir.
+6. **Sıralı çıktı:** Sayılar küçükten büyüğe sıralanır; her kartın
+   altında hangi kareden üretildiği ("Kare N") yazar.
+7. **0 asla üretilmez:** Minimum değer ayarı 1'in altına inemez.
+
+## Görünüm
+
+Sayılar ekrana 3 kolonlu bir grid'de yerleşir — yatay kaydırma yoktur,
+1–18 sayının tamamı ekrana sığar (uzun listeler dikey kaydırılır).
 
 Güvenlik koşulu: `(max - min + 1) >= count` olmalı. Aksi halde Ayarlar'da
 kayıt anında ve çekim anında uyarı gösterilir.

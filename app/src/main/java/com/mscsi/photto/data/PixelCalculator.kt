@@ -254,6 +254,11 @@ object PixelCalculator {
             labels.add("Kare ${i + 1}")
         }
 
-        return PixelResult(numbers = numbers, labels = labels, raw = raw)
+        // Sayıları küçükten büyüğe sırala (etiketler kendi sayısıyla birlikte taşınır)
+        val sortedPairs = numbers.zip(labels).sortedBy { it.first }
+        val sortedNumbers = sortedPairs.map { it.first }
+        val sortedLabels = sortedPairs.map { it.second }
+
+        return PixelResult(numbers = sortedNumbers, labels = sortedLabels, raw = raw)
     }
 }

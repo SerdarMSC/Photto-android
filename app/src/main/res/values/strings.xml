@@ -25,7 +25,7 @@
     <string name="settings_min">Minimum Değer</string>
     <string name="settings_max">Maksimum Değer</string>
     <string name="settings_count_hint">Üretilecek sayı adedi (1–18)</string>
-    <string name="settings_min_hint">En küçük sayı (0–255)</string>
+    <string name="settings_min_hint">En küçük sayı (1–255, 0 yasak)</string>
     <string name="settings_max_hint">En büyük sayı (0–255)</string>
     <string name="save">Kaydet</string>
     <string name="reset">Sıfırla</string>
