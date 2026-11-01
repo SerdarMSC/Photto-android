@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onCaptureSuccess(image: ImageProxy) {
                     try {
                         val bitmap = image.toBitmap()
-                        val rotated = rotateBitmap(bitmap, image.imageInfo.rotationDegrees)
+                        val rotated = rotateBitmap(bitmap, image.imageInfo.rotationDegrees.toFloat())
                         processImage(rotated)
                     } catch (e: Exception) {
                         Log.e(TAG, "Görüntü işlenemedi", e)

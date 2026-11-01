@@ -42,7 +42,7 @@ data class PixelResult(
  */
 object PixelCalculator {
 
-    /** Çok büyük görsellerde performans için örneklem上限ı. */
+    /** Çok büyük görsellerde performans için örneklem siniri. */
     private const val MAX_SAMPLES = 100_000
 
     /** Tek bir metrik 0..255 → min..max ölçeklemesi (yuvarlama). */
