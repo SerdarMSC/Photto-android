@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Photto</string>
+    <string name="settings_title">Ayarlar</string>
+
+    <!-- Ana ekran -->
+    <string name="capture">Çek</string>
+    <string name="settings">Ayarlar</string>
+    <string name="result_title">Üretilen Sayılar</string>
+    <string name="stats_title">Detaylı İstatistik</string>
+    <string name="range_info_format">Aralık: %1$d – %2$d · %3$d sayı</string>
+    <string name="placeholder_format">Çek tuşuna basın\n%1$d adet sayı · %2$d–%3$d aralığı</string>
+
+    <!-- İstatistik formatı: R, G, B, Parlaklık, Doygunluk %, Kontrast -->
+    <string name="stats_format">Kırmızı (R): %1$d\nYeşil  (G): %2$d\nMavi    (B): %3$d\nParlaklık: %4$d\nDoygunluk: %5$d%%\nKontrast: %6$d</string>
+
+    <!-- Hata mesajları -->
+    <string name="camera_permission_denied">Kamera izni reddedildi. Uygulama çalışamaz.</string>
+    <string name="camera_init_failed">Kamera başlatılamadı.</string>
+    <string name="camera_not_ready">Kamera hazır değil, bekleyin.</string>
+    <string name="capture_failed">Çekim başarısız oldu.</string>
+
+    <!-- Ayarlar ekranı -->
+    <string name="settings_count">Sayı Adedi</string>
+    <string name="settings_min">Minimum Değer</string>
+    <string name="settings_max">Maksimum Değer</string>
+    <string name="settings_count_hint">Üretilecek sayı adedi (1–18)</string>
+    <string name="settings_min_hint">En küçük sayı (0–255)</string>
+    <string name="settings_max_hint">En büyük sayı (0–255)</string>
+    <string name="save">Kaydet</string>
+    <string name="reset">Sıfırla</string>
+    <string name="err_min_max">Minimum değer maksimumdan küçük olmalı.</string>
+    <string name="saved">Ayarlar kaydedildi.</string>
+</resources>

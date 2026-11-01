@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Karanlık tema varyantı -->
+    <style name="Theme.Photto" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+
+        <item name="android:colorBackground">#13131F</item>
+        <item name="colorSurface">#1E1E2C</item>
+        <item name="colorOnBackground">#EAEAF0</item>
+        <item name="colorOnSurface">#EAEAF0</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_dark</item>
+    </style>
+
+</resources>

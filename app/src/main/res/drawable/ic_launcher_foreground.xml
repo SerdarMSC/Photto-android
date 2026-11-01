@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Kamera gövdesi -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,38 L46,38 L49,33 L59,33 L62,38 L70,38 C72.21,38 74,39.79 74,42 L74,66 C74,68.21 72.21,70 70,70 L38,70 C35.79,70 34,68.21 34,66 L34,42 C34,39.79 35.79,38 38,38 Z" />
+    <!-- Lens dış halka -->
+    <path
+        android:fillColor="#5B4FE9"
+        android:pathData="M54,44 m-9,0 a9,9 0,1 1,18 0 a9,9 0,1 1,-18 0" />
+    <!-- Lens iç -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,44 m-5,0 a5,5 0,1 1,10 0 a5,5 0,1 1,-10 0" />
+    <!-- Flaş -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M67,42 m-1.5,0 a1.5,1.5 0,1 1,3 0 a1.5,1.5 0,1 1,-3 0" />
+</vector>
